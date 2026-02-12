@@ -46,7 +46,6 @@ ISAPI endpoints use standard HTTP methods (GET, POST, PUT) with JSON payloads. A
 }
 ```
 
-**Used in:** [GetEnrolledUsersAsync()](file:///c:/Users/HP/source/repos/Controle_d%27acces/Controle_d%27acces/Services/HikvisionService.cs#866-957), Section 4 UI
 
 ---
 
@@ -84,8 +83,6 @@ ISAPI endpoints use standard HTTP methods (GET, POST, PUT) with JSON payloads. A
   }
 }
 ```
-
-**Used in:** [SetUserEnabledAsync()](file:///c:/Users/HP/source/repos/Controle_d%27acces/Controle_d%27acces/Services/HikvisionService.cs#686-750), Employee toggle switches
 
 ---
 
@@ -132,7 +129,6 @@ ISAPI endpoints use standard HTTP methods (GET, POST, PUT) with JSON payloads. A
 }
 ```
 
-**Used in:** [GetPunchHistoryAsync()](file:///c:/Users/HP/source/repos/Controle_d%27acces/Controle_d%27acces/Services/HikvisionService.cs#709-831), "Importer" button
 
 ---
 
@@ -154,7 +150,6 @@ ISAPI endpoints use standard HTTP methods (GET, POST, PUT) with JSON payloads. A
 
 **Response:** Face image in base64 format within the JSON.
 
-**Used in:** [GetFaceDataAsync()](file:///c:/Users/HP/source/repos/Controle_d%27acces/Controle_d%27acces/Services/HikvisionService.cs#958-1019) (for export)
 
 ---
 
@@ -175,7 +170,6 @@ ISAPI endpoints use standard HTTP methods (GET, POST, PUT) with JSON payloads. A
 
 **Response:** List of fingerprint templates (binary data encoded).
 
-**Used in:** [GetFingerprintDataAsync()](file:///c:/Users/HP/source/repos/Controle_d%27acces/Controle_d%27acces/Services/HikvisionService.cs#1229-1319) (for export)
 
 ---
 
@@ -204,7 +198,7 @@ ISAPI endpoints use standard HTTP methods (GET, POST, PUT) with JSON payloads. A
 }
 ```
 
-**Used in:** [CreateUserWithBiometricsAsync()](file:///c:/Users/HP/source/repos/Controle_d%27acces/Controle_d%27acces/Services/HikvisionService.cs#1369-1436) (for import)
+
 
 ---
 
@@ -232,7 +226,6 @@ ISAPI endpoints use standard HTTP methods (GET, POST, PUT) with JSON payloads. A
 - Removes user profile + all associated biometrics (face, fingerprints)
 - Action is irreversible — user must be re-enrolled on the device
 
-**Used in:** [DeleteUserAsync()](file:///c:/Users/HP/source/repos/Controle_d%27acces/Controle_d%27acces/Services/HikvisionService.cs#751-799), Section 4 enrolled users 🗑 button
 
 ---
 
@@ -247,7 +240,7 @@ These were attempted but **not supported** by the device:
 
 **Result:** Device returned `statusCode: 4 - Invalid Operation`
 
-**Used in:** [ClearEventLogsAsync()](file:///c:/Users/HP/source/repos/Controle_d%27acces/Controle_d%27acces/Services/HikvisionService.cs#832-865) (capability discovery)
+
 
 ---
 
@@ -264,7 +257,6 @@ public static extern bool NET_DVR_Init();
 
 **Purpose:** Initialize the SDK library (called once at startup).
 
-**Used in:** [HikvisionService()](file:///c:/Users/HP/source/repos/Controle_d%27acces/Controle_d%27acces/Services/HikvisionService.cs#19-1388) constructor
 
 ---
 
@@ -277,7 +269,6 @@ public static extern bool NET_DVR_Cleanup();
 
 **Purpose:** Clean up SDK resources (called on app exit).
 
-**Used in:** [HikvisionService()](file:///c:/Users/HP/source/repos/Controle_d%27acces/Controle_d%27acces/Services/HikvisionService.cs#19-1388) destructor
 
 ---
 
@@ -297,7 +288,6 @@ public static extern int NET_DVR_Login_V40(
 
 **Returns:** User ID (positive integer) on success, -1 on failure.
 
-**Used in:** [Connect()](file:///c:/Users/HP/source/repos/Controle_d%27acces/Controle_d%27acces/Services/HikvisionService.cs#376-427)
 
 ---
 
@@ -308,7 +298,6 @@ public static extern int NET_DVR_Login_V40(
 public static extern bool NET_DVR_Logout(int userId);
 ```
 
-**Used in:** [Disconnect()](file:///c:/Users/HP/source/repos/Controle_d%27acces/Controle_d%27acces/Services/HikvisionService.cs#673-685)
 
 ---
 
@@ -326,7 +315,6 @@ public static extern int NET_DVR_SetupAlarmChan_V41(
 
 **Returns:** Alarm handle (positive integer) on success.
 
-**Used in:** [StartRealTimeAlarm()](file:///c:/Users/HP/source/repos/Controle_d%27acces/Controle_d%27acces/Services/HikvisionService.cs#464-510)
 
 ---
 
@@ -336,8 +324,6 @@ public static extern int NET_DVR_SetupAlarmChan_V41(
 [DllImport("HCNetSDK.dll")]
 public static extern bool NET_DVR_CloseAlarmChan_V30(int alarmHandle);
 ```
-
-**Used in:** [StopRealTimeAlarm()](file:///c:/Users/HP/source/repos/Controle_d%27acces/Controle_d%27acces/Services/HikvisionService.cs#511-523)
 
 ---
 
@@ -364,8 +350,6 @@ public delegate bool MessageCallback(
 
 **Callback Command:** `0x5002` — Access control event (fingerprint, face, card)
 
-**Used in:** [StartRealTimeAlarm()](file:///c:/Users/HP/source/repos/Controle_d%27acces/Controle_d%27acces/Services/HikvisionService.cs#464-510), [MessageCallback_Handler()](file:///c:/Users/HP/source/repos/Controle_d%27acces/Controle_d%27acces/Services/HikvisionService.cs#482-566)
-
 ---
 
 ### 8. Get Last Error
@@ -377,7 +361,6 @@ public static extern uint NET_DVR_GetLastError();
 
 **Returns:** Error code (e.g., 7 = connection timeout, 1 = incorrect password).
 
-**Used in:** [Connect()](file:///c:/Users/HP/source/repos/Controle_d%27acces/Controle_d%27acces/Services/HikvisionService.cs#376-427), [GetErrorDescription()](file:///c:/Users/HP/source/repos/Controle_d%27acces/Controle_d%27acces/Services/HikvisionService.cs#428-463)
 
 ---
 
@@ -420,8 +403,6 @@ public struct NET_DVR_XML_CONFIG_OUTPUT
     public byte[] byRes;
 }
 ```
-
-**Used in:** [SendSTDXMLConfig()](file:///c:/Users/HP/source/repos/Controle_d%27acces/Controle_d%27acces/Services/HikvisionService.cs#972-1074), [ClearEventLogsAsync()](file:///c:/Users/HP/source/repos/Controle_d%27acces/Controle_d%27acces/Services/HikvisionService.cs#832-865) (capability discovery)
 
 ---
 
